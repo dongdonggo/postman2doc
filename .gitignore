@@ -4,7 +4,7 @@
 /database/database.sqlite
 /storage/app/*.markdown
 /storage/app/*.html
-
+storage/app/*.json
 .phplint-cache
 
 composer.lock
