@@ -52,3 +52,8 @@ Released under the MIT license
 ## Thanks
 
 This tool is base on [laravel-zero](https://github.com/laravel-zero/laravel-zero)
+
+
+## dongdong run   
+
+php postman2doc convert recall.postman_collection.json

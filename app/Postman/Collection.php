@@ -48,7 +48,7 @@ class Collection extends AbstractConvert
      * @param array $collection
      * @return static
      */
-    public static function parse(array $collection): self
+        public static function parse(array $collection): self
     {
         return new static($collection);
     }

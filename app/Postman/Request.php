@@ -47,7 +47,10 @@ class Request extends AbstractConvert
      */
     protected function parseRequest(array $request): void
     {
+//        dd();
+//        dd($request);
         $this->setRaw($request);
+//        dd($request); die;
 
         isset($request['auth']) && $this->setAuth($request['auth']);
 
@@ -55,7 +58,16 @@ class Request extends AbstractConvert
 
         $this->setHeader($request['header']);
 
+        $request['body'] = $request['body']?$request['body']:[];
+
+        if  ($request['method'] == 'GET') {
+//            dd($request['query'], $request);
+
+             $this->setParam($request['url']['query']);
+        }
+
         $this->setBody($request['body']);
+
 
         $this->setUrl($request['url']);
 
@@ -91,7 +103,14 @@ class Request extends AbstractConvert
      */
     protected function setBody(array $body): void
     {
+
         $this->body = new Body($body);
+    }
+
+    public function setParam(array $body): void
+    {
+
+        $this->param = new Param($body);
     }
 
     /**
@@ -130,5 +149,12 @@ class Request extends AbstractConvert
             $this->body->convert($type);
             $writer->enter();
         }
+//        dd($this->param->hasBody());
+        if ($this->param->hasBody()) {
+            $writer->h('PARAM', 5);
+            $this->param->convert($type);
+            $writer->enter();
+        }
+
     }
 }

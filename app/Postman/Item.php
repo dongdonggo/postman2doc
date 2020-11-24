@@ -75,8 +75,11 @@ class Item extends AbstractConvert
      */
     protected function setResponse(array $responses): void
     {
+
+
         foreach ($responses as $response) {
-            $this->response[] = new Response($response);
+            $item =  new Response($response);
+            $this->response[] = $item;
         }
     }
 
@@ -104,6 +107,7 @@ class Item extends AbstractConvert
 
             if (count($this->response)) {
                 $writer->h('RESPONSES', 4);
+
                 foreach ($this->response as $response) $response->convert($type);
             }
 
